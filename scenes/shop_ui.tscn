@@ -1,0 +1,182 @@
+[gd_scene load_steps=5 format=3 uid="uid://cio7jtpdu0sx4"]
+
+[ext_resource type="Script" uid="uid://b1pkq2ccdk3ur" path="res://scripts/control.gd" id="1_fs6yy"]
+[ext_resource type="Script" uid="uid://dnmfcga8pwjeh" path="res://scripts/shop_ui.gd" id="1_oixfk"]
+[ext_resource type="Script" uid="uid://cuc4etqcn5dp7" path="res://scripts/shopclosebutton.gd" id="3_18xnp"]
+
+[sub_resource type="Theme" id="Theme_oixfk"]
+
+[node name="shopUI" type="CanvasLayer"]
+script = ExtResource("1_oixfk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fs6yy")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1154.0
+offset_bottom = 650.0
+color = Color(0.0745098, 0.0745098, 0.0745098, 0.494118)
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 39.0
+offset_right = 1118.0
+offset_bottom = 606.0
+theme = SubResource("Theme_oixfk")
+
+[node name="Button" type="Button" parent="Control/Panel"]
+custom_minimum_size = Vector2(61.175, 29.875)
+layout_mode = 0
+offset_left = 1058.0
+offset_top = -40.0
+offset_right = 1119.18
+offset_bottom = -9.0
+text = "close"
+script = ExtResource("3_18xnp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 45.0
+
+[node name="abilities tab" type="Button" parent="Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_pressed = true
+text = "abilities"
+
+[node name="player tab" type="Button" parent="Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "player"
+alignment = 0
+expand_icon = true
+
+[node name="upgrade menu" type="PanelContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 98.0
+offset_right = 882.0
+offset_bottom = 543.0
+
+[node name="abilities upgrades" type="GridContainer" parent="Control/Panel/upgrade menu"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/h_separation = 52
+theme_override_constants/v_separation = 67
+columns = 3
+
+[node name="Button" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "doublejumps +1"
+
+[node name="Button2" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button3" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button4" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button5" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button6" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button7" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button8" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button9" type="Button" parent="Control/Panel/upgrade menu/abilities upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="player upgrades" type="GridContainer" parent="Control/Panel/upgrade menu"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/h_separation = 52
+theme_override_constants/v_separation = 67
+columns = 3
+
+[node name="Button" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "damage +10"
+
+[node name="Button2" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button3" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button4" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button5" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button6" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button7" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button8" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Button9" type="Button" parent="Control/Panel/upgrade menu/player upgrades"]
+custom_minimum_size = Vector2(263.77, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[connection signal="pressed" from="Control/Panel/Button" to="Control/Panel/Button" method="_on_pressed"]
+[connection signal="button_down" from="Control/Panel/HBoxContainer/abilities tab" to="Control" method="_on_abilities_tab_button_down"]
+[connection signal="button_down" from="Control/Panel/HBoxContainer/player tab" to="Control" method="_on_player_tab_button_down"]
