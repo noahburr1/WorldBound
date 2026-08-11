@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 		velocity = totalknockback
 		
 		totalknockback = Vector2.ZERO
+	elif Input.is_action_pressed("slide"):
+		velocity.x = move_toward(velocity.x, direction * 60, 120 * delta)
 	elif canmove:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, direction * SPEED, acceleration * delta) 
