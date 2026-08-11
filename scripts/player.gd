@@ -11,7 +11,7 @@ var canmove = true
 var canswing = Global.canswing
 var hascoyotetime = true
 
-#test note
+#test note tablet test 5
 
 @onready var character_sprite: AnimatedSprite2D = $characterSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
