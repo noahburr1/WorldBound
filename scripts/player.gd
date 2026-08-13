@@ -40,7 +40,9 @@ func _physics_process(delta: float) -> void:
 		
 		totalknockback = Vector2.ZERO
 	elif Input.is_action_pressed("slide"):
-		velocity.x = move_toward(velocity.x, direction * 60, 120 * delta)
+		if Input.is_action_just_pressed("slide") and velocity.x == 200 *direction:
+			velocity.x += 160 * direction
+		velocity.x = move_toward(velocity.x, direction * 60, 200 * delta)
 	elif canmove:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, direction * SPEED, acceleration * delta) 
@@ -182,3 +184,7 @@ func update_second_health_bar():
 
 func _on_damage_timer_timeout() -> void:
 	update_second_health_bar()
+	
+#bounce is from greenslime pet
+func bounce():
+	velocity.y = -590
