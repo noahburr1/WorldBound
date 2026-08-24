@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ds2pu2opqbt5a"]
+
+[ext_resource type="Script" uid="uid://djv7sxhbmd4tu" path="res://items/item_data.gd" id="1_6hiyj"]
+[ext_resource type="Texture2D" uid="uid://dan4cp8b7v8qa" path="res://assets/sprites/MONSTER GEM.png" id="1_ddug0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5a70"]
+atlas = ExtResource("1_ddug0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddug0"]
+atlas = ExtResource("1_ddug0")
+region = Rect2(96, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_6hiyj")
+id = "Monster Gem"
+item_name = "Monster Gem"
+icon = SubResource("AtlasTexture_ddug0")
+displayed_texture = SubResource("AtlasTexture_w5a70")
+description = "obtained by killing various monsters"
+max_stack = 9999999999999
+effect = "none"
+quantity = 1
+metadata/_custom_type_script = "uid://djv7sxhbmd4tu"

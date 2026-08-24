@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciukoi8em8lea"]
+[gd_scene format=3 uid="uid://ciukoi8em8lea"]
 
 [ext_resource type="Script" uid="uid://dx8kqk56n02yw" path="res://green_slime_pet.gd" id="1_ly0mk"]
 [ext_resource type="Texture2D" uid="uid://bcy52bkye04hb" path="res://assets/sprites/slime_green.png" id="2_cvdyk"]
@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xxxdq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 8.0
 }]
@@ -59,33 +59,32 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly0mk"]
 size = Vector2(12, 4)
 
-[node name="green slime pet" type="CharacterBody2D" groups=["companions"]]
-collision_layer = 4
+[node name="green slime pet" type="CharacterBody2D" unique_id=1240763749 groups=["companions"]]
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_ly0mk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=238559917]
 sprite_frames = SubResource("SpriteFrames_lnid4")
 autoplay = "default"
 frame_progress = 0.202383
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=642418454]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_7rcrn")
 
-[node name="wallcast" type="RayCast2D" parent="CollisionShape2D"]
+[node name="wallcast" type="RayCast2D" parent="CollisionShape2D" unique_id=652780923]
 position = Vector2(0, 4)
 target_position = Vector2(12, 0)
 
-[node name="floorcast" type="RayCast2D" parent="CollisionShape2D"]
+[node name="floorcast" type="RayCast2D" parent="CollisionShape2D" unique_id=2133165550]
 position = Vector2(0, -5)
 target_position = Vector2(5, 15)
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D"]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D" unique_id=846569139]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D" unique_id=323717613]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_ly0mk")
 

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://do5hr83agr0im"]
+
+[ext_resource type="Texture2D" uid="uid://1agu3mvviigh" path="res://assets/sprites/world_tileset.png" id="1_ntmgj"]
+[ext_resource type="Script" uid="uid://djv7sxhbmd4tu" path="res://items/item_data.gd" id="1_v3hd7"]
+[ext_resource type="PackedScene" uid="uid://ddlg0alruwfem" path="res://scenes/basic_box.tscn" id="3_31cgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk71l"]
+atlas = ExtResource("1_ntmgj")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntmgj"]
+atlas = ExtResource("1_ntmgj")
+region = Rect2(112, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_v3hd7")
+id = "basic_box"
+item_name = "box"
+icon = SubResource("AtlasTexture_ntmgj")
+displayed_texture = SubResource("AtlasTexture_yk71l")
+description = "basic platform item for player"
+effect = "none"
+quantity = 1
+world_behavior = "Placeable"
+world_scene = ExtResource("3_31cgi")
+metadata/_custom_type_script = "uid://djv7sxhbmd4tu"

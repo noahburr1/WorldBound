@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c08gdoy1ipmtk"]
+[gd_scene format=3 uid="uid://c08gdoy1ipmtk"]
 
 [ext_resource type="Texture2D" uid="uid://q7vqeenpl6fc" path="res://assets/sprites/slime_purple.png" id="1_ajrgm"]
 [ext_resource type="Script" uid="uid://bev577bnxs5mp" path="res://scenes/redslime.gd" id="1_maxe4"]
@@ -79,7 +79,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ltsve")
 }],
-"loop": false,
+"loop": 0,
 "name": &"damage",
 "speed": 11.0
 }, {
@@ -96,33 +96,35 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ctge2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 8.0
 }]
 
-[node name="redslime" type="CharacterBody2D" groups=["enemy"]]
+[node name="redslime" type="CharacterBody2D" unique_id=167562775 groups=["enemy"]]
 script = ExtResource("1_maxe4")
 gem = ExtResource("2_4ml7m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=986760006]
 position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_4ml7m")
 
-[node name="redslimeArea" type="Area2D" parent="."]
+[node name="redslimeArea" type="Area2D" parent="." unique_id=929064437]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_4vv2h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="redslimeArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="redslimeArea" unique_id=1006753929]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3v17b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="redslimeArea"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="redslimeArea" unique_id=2061857342]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_ww205")
 autoplay = "default"
 frame_progress = 0.965391
 
-[node name="RayCast2D" type="RayCast2D" parent="redslimeArea"]
+[node name="RayCast2D" type="RayCast2D" parent="redslimeArea" unique_id=1658343889]
 target_position = Vector2(7, 0)
 
 [connection signal="body_entered" from="redslimeArea" to="redslimeArea" method="_on_body_entered"]
