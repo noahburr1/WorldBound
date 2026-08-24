@@ -5,6 +5,7 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 var player
 var follow_distance = 80
+var is_tamed = false
 @onready var wallcast: RayCast2D = $CollisionShape2D/wallcast
 @onready var floorcast: RayCast2D = $CollisionShape2D/floorcast
 @onready var playercast: RayCast2D = $CollisionShape2D/playercast
@@ -26,9 +27,9 @@ func _physics_process(delta: float) -> void:
 	elif not floorcast.is_colliding():
 		velocity.x = 0
 		
-
-	#follow player
-	follow_player()
+	if is_tamed:
+		#follow player
+		follow_player()
 	
 	#bounce off of head
 	
@@ -60,8 +61,10 @@ func follow_player():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-
-	
 	if body.is_in_group("player"):
 		body.bounce()
 		velocity.y = 0
+
+func hit():
+	is_tamed = true
+	Inventory.add_pet("green_slime")

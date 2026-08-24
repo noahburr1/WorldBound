@@ -20,6 +20,7 @@ var hascoyotetime = true
 @onready var main_health_bar: ProgressBar = $"Camera2D/CanvasLayer/Control/main health bar"
 @onready var secondary_health_bar: ProgressBar = $"Camera2D/CanvasLayer/Control/secondary health bar"
 @onready var damage_timer: Timer = $"Camera2D/CanvasLayer/Control/secondary health bar/damage timer"
+@onready var inventory_ui: Control = $"Camera2D/CanvasLayer/inventory UI"
 
 func _ready() -> void:
 	
@@ -30,6 +31,7 @@ func _ready() -> void:
 	var scene_name = get_tree().current_scene.name
 	if Global.respawn_position.has(scene_name):
 		global_position = Global.respawn_position[scene_name]
+	
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("moveL", "moveR")
@@ -107,10 +109,7 @@ func _physics_process(delta: float) -> void:
 		await get_tree().create_timer(.5).timeout
 		rejump = false
 	
-	if Input.is_action_pressed("timeslow"):
-		Engine.time_scale = .75
-	else:
-		Engine.time_scale = 1
+	
 	
 	
 	

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://eyunam56xchk"]
+
+[ext_resource type="Script" uid="uid://dc18p8ghkgu4d" path="res://scripts/inventory_ui.gd" id="1_tahbm"]
+
+[node name="inventory UI" type="Control" unique_id=830478946]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -35.0
+offset_right = -28.444458
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tahbm")
+
+[node name="Panel" type="Panel" parent="." unique_id=1094402801]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 32.0
+offset_right = 1122.0
+offset_bottom = 615.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=928798746]
+layout_mode = 0
+offset_right = 1077.0
+offset_bottom = 587.0
+
+[node name="tabs" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=957797715]
+layout_mode = 2
+
+[node name="Items Button" type="Button" parent="Panel/VBoxContainer/tabs" unique_id=234945986]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+action_mode = 0
+text = "items"
+
+[node name="Materials Button" type="Button" parent="Panel/VBoxContainer/tabs" unique_id=730560356]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+action_mode = 0
+text = "materials"
+
+[node name="Pets Button" type="Button" parent="Panel/VBoxContainer/tabs" unique_id=191924131]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+action_mode = 0
+text = "companions"
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer" unique_id=1156308218]
+layout_mode = 2
+columns = 5
+
+[connection signal="pressed" from="Panel/VBoxContainer/tabs/Items Button" to="." method="_on_items_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/tabs/Materials Button" to="." method="_on_materials_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/tabs/Pets Button" to="." method="_on_pets_button_pressed"]
