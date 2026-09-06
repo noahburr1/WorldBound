@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
+const SPEED = 149.0
 const JUMP_VELOCITY = -400.0
 var player
 var follow_distance = 80
@@ -10,6 +10,7 @@ var is_tamed = false
 @onready var floorcast: RayCast2D = $CollisionShape2D/floorcast
 @onready var playercast: RayCast2D = $CollisionShape2D/playercast
 @onready var area_2d: Area2D = $CollisionShape2D/Area2D
+var pet_data: PetData = preload("res://pets/Slime.tres")
 
 
 
@@ -29,7 +30,26 @@ func _physics_process(delta: float) -> void:
 		
 	if is_tamed:
 		#follow player
-		follow_player()
+		var direction = global_position.direction_to(player.global_position)
+		if player == null:
+			return
+		var distance =global_position.distance_to(player.global_position)
+		if distance > 900:
+			global_position = player.global_position
+			
+		if distance > follow_distance:
+			
+			
+			velocity.x = SPEED * direction.x
+		
+		else:
+			velocity.x = 0
+		if direction.x > 0:
+			wallcast.scale.x = 1
+			floorcast.rotation = 0
+		elif direction.x < 0:
+			wallcast.scale.x = -1
+			floorcast.rotation = -320
 	
 	#bounce off of head
 	
@@ -38,7 +58,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func follow_player():
+func follow_player(delta: float):
 	var direction = global_position.direction_to(player.global_position)
 	if player == null:
 		return
@@ -48,7 +68,7 @@ func follow_player():
 		
 	if distance > follow_distance:
 		
-		velocity.x = SPEED * direction.x
+		velocity.x = SPEED * direction
 	
 	else:
 		velocity.x = 0
@@ -67,4 +87,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func hit():
 	is_tamed = true
-	Inventory.add_pet("green_slime")
+	Inventory.add_pet(pet_data)
+	self.queue_free()

@@ -4,10 +4,7 @@ extends Control
 @onready var items_button: Button = $"Panel/VBoxContainer/tabs/Items Button"
 @onready var materials_button: Button = $"Panel/VBoxContainer/tabs/Materials Button"
 @onready var pets_button: Button = $"Panel/VBoxContainer/tabs/Pets Button"
-@onready var petslot_1: Button = $"Panel/pet hotbar/petslot1"
-@onready var petslot_2: Button = $"Panel/pet hotbar/petslot2"
-@onready var petslot_3: Button = $"Panel/pet hotbar/petslot3"
-@onready var petslot_4: Button = $"Panel/pet hotbar/petslot4"
+
 
 const slot_scene = preload("res://scenes/inventory_slot.tscn")
 var current_tab := "items"
@@ -25,10 +22,16 @@ func update_inventory():
 	elif current_tab == "materials":
 		show_materials()
 	
+func reedy():
+	
+	Inventory.inventory_changed.connect(update_inventory)
+	Inventory.inventory_changed
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
+		update_inventory()
 		get_tree().paused = !get_tree().paused
 
 func _ready() -> void:
@@ -83,27 +86,13 @@ func show_materials():
 		slot.text = material_id + " x" + str(amount)
 
 func show_pets():
-	
-	
-	
-	for pet in Inventory.pets:
+	for i in range(Inventory.pets.size()):
+		var pet = Inventory.pets[i]
+
 		var slot = slot_scene.instantiate()
 		grid_container.add_child(slot)
+
+		slot.slot_index = i
+
 		if pet != null:
 			slot.set_pet(pet)
-		
-
-func update_pet_hotbar():
-	petslot_1.icon = null
-	petslot_2.icon = null
-	petslot_3.icon = null
-	petslot_4.icon = null
-	
-	if Inventory.equipped_pets[0] != null:
-		petslot_1.icon = Inventory.equipped_pets[0].icon
-	if Inventory.equipped_pets[1] != null:
-		petslot_2.icon = Inventory.equipped_pets[1].icon
-	if Inventory.equipped_pets[2] != null:
-		petslot_3.icon = Inventory.equipped_pets[2].icon
-	if Inventory.equipped_pets[3] != null:
-		petslot_4.icon = Inventory.equipped_pets[3].icon

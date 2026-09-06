@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bcy52bkye04hb" path="res://assets/sprites/slime_green.png" id="1_avwv5"]
 [ext_resource type="Script" uid="uid://clgeia64x2d6u" path="res://pets/PetData.gd" id="1_tbg8s"]
-[ext_resource type="PackedScene" uid="uid://ciukoi8em8lea" path="res://scenes/green_slime_pet.tscn" id="2_c5ovu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8k5t4"]
 atlas = ExtResource("1_avwv5")
@@ -13,5 +12,4 @@ script = ExtResource("1_tbg8s")
 id = "Slime"
 pet_name = "Slime"
 icon = SubResource("AtlasTexture_8k5t4")
-pet_scene = ExtResource("2_c5ovu")
 metadata/_custom_type_script = "uid://clgeia64x2d6u"

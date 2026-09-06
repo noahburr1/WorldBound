@@ -10,6 +10,7 @@ var materials: Dictionary = {}
 signal inventory_changed
 
 func _ready() -> void:
+	
 	for i in max_slots:
 		items.append(null)
 	
@@ -31,9 +32,12 @@ func add_item(item: ItemData):
 	
 
 func add_pet(pet):
+	print("ADDING PET: ", pet)
+
 	pets.append(pet)
-	print(pet)
-	print(pets)
+
+	print("PETS ARRAY: ", pets)
+
 	inventory_changed.emit()
 
 func add_material(material_id: String, amount: int):

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://fl4pwaoy6tlj" path="res://scripts/shop_entrance.gd" id="7_bnhpx"]
 [ext_resource type="PackedScene" uid="uid://bbk12npuwow6j" path="res://scenes/spawn_point.tscn" id="8_il54y"]
 [ext_resource type="PackedScene" uid="uid://bn4s2881tt0f2" path="res://scenes/item_pickup.tscn" id="10_pn685"]
+[ext_resource type="PackedScene" uid="uid://ciukoi8em8lea" path="res://scenes/green_slime_pet.tscn" id="10_u38ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ue4rx"]
 texture = ExtResource("1_23dc1")
@@ -267,6 +268,9 @@ position = Vector2(242, -19)
 
 [node name="item pickup6" parent="." unique_id=497202256 instance=ExtResource("10_pn685")]
 position = Vector2(274, -19)
+
+[node name="green slime pet" parent="." unique_id=1240763749 instance=ExtResource("10_u38ol")]
+position = Vector2(325, -16)
 
 [connection signal="area_entered" from="Node2D/shop entrance" to="Node2D/shop entrance" method="_on_area_entered"]
 [connection signal="area_exited" from="Node2D/shop entrance" to="Node2D/shop entrance" method="_on_area_exited"]
