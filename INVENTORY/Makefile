@@ -1,8 +1,9 @@
 inventory:
-	g++ inventory.cpp $$(pkg-config --libs --cflags raylib) -o inventory
+	g++ inventory1.cpp $$(pkg-config --libs --cflags raylib) -o inventory2
 
-sprite:
-	g++ proto1.cpp $$(pkg-config --libs --cflags raylib) -o running
+
+inventory1:
+	g++ inventory1.cpp $$(pkg-config --libs --cflags raylib) -o inventory1
 
 clean:
-	rm -f inventory
+	rm -f inventory2
