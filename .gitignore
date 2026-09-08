@@ -14,3 +14,9 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# ignore .swp files
+*.swp
+
+# ignore .DS_STORE
+.DS_STORE
