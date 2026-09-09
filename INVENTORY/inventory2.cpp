@@ -17,6 +17,7 @@ struct INVENTORY {
 	bool active;
 };
 
+// Switch for inventory
 enum SWITCH {
 	ON,
 	OFF
@@ -30,10 +31,7 @@ int main(){
 	vector <Rectangle> main_inv = {};
 	vector <Rectangle> second_inv = {};
 
-
-	// bool inventory_switch = 0;
 	SWITCH inventory_switch = OFF;
-
 
 	float y = 20;
 	for (int i=0; i < 5; i++){
@@ -63,6 +61,7 @@ int main(){
 		ClearBackground(RAYWHITE);
 
 
+		// SWITCH STATEMENT
 		if (IsKeyPressed(KEY_Q)){
 			if (inventory_switch == OFF){
 				inventory_switch = ON;
@@ -71,11 +70,9 @@ int main(){
 			else if (inventory_switch == ON){
 				inventory_switch = OFF;
 			}
-
 		}
 
 		// DRAW INVENTORIES
-		
 		if (inventory_switch == ON){
 			for (int i = 0; i < main_inv.size(); i++){
 				DrawRectangle(main_inv[i].x, main_inv[i].y, main_inv[i].width, main_inv[i].height, GRAY);
@@ -83,7 +80,6 @@ int main(){
 
 			// DRAW PLAYER HUB
 			DrawRectangle(20, 20, 290, 390, Color{37, 37, 37, 255});
-
 		}
 
 		for (int i = 0; i < second_inv.size(); i++){
@@ -91,7 +87,6 @@ int main(){
 		}
 
 		EndDrawing();
-
 	}
 
 	CloseWindow();
