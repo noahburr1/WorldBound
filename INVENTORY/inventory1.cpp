@@ -23,7 +23,7 @@ int main(){
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Inventory"); // screen
 
 	Inventory inventory;
-	inventory.image = LoadTexture("assets/Icon1.png");
+	inventory.image = LoadTexture("assets/dead/Icon1.png");
 
 	inventory.position.y = 250.0f;
 	inventory.position.x = 20.0f;
@@ -34,7 +34,7 @@ int main(){
 	vector <Inventory> inventory_store = {};
 
 	Inventory collect;
-	collect.image = LoadTexture("assets/Icon1.png");
+	collect.image = LoadTexture("assets/dead/Icon1.png");
 	collect.rect = {0, 0, 32.0, 32.0};
 	collect.active = 1;
 
