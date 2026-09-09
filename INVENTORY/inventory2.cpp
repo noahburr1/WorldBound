@@ -17,6 +17,10 @@ struct INVENTORY {
 	bool active;
 };
 
+enum SWITCH {
+	ON,
+	OFF
+};
 
 int main(){
 	// SETUP
@@ -24,8 +28,11 @@ int main(){
 
 	// MATRIX FOR INVENTORY
 	vector <Rectangle> main_inv = {};
-
 	vector <Rectangle> second_inv = {};
+
+
+	// bool inventory_switch = 0;
+	SWITCH inventory_switch = OFF;
 
 
 	float y = 20;
@@ -56,17 +63,32 @@ int main(){
 		ClearBackground(RAYWHITE);
 
 
+		if (IsKeyPressed(KEY_Q)){
+			if (inventory_switch == OFF){
+				inventory_switch = ON;
+			}
+
+			else if (inventory_switch == ON){
+				inventory_switch = OFF;
+			}
+
+		}
+
 		// DRAW INVENTORIES
-		for (int i = 0; i < main_inv.size(); i++){
-			DrawRectangle(main_inv[i].x, main_inv[i].y, main_inv[i].width, main_inv[i].height, GRAY);
+		
+		if (inventory_switch == ON){
+			for (int i = 0; i < main_inv.size(); i++){
+				DrawRectangle(main_inv[i].x, main_inv[i].y, main_inv[i].width, main_inv[i].height, GRAY);
+			}
+
+			// DRAW PLAYER HUB
+			DrawRectangle(20, 20, 290, 390, Color{37, 37, 37, 255});
+
 		}
 
 		for (int i = 0; i < second_inv.size(); i++){
 			DrawRectangle(second_inv[i].x, second_inv[i].y, second_inv[i].width, second_inv[i].height, GRAY);
 		}
-
-		// DRAW PLAYER HUB
-		DrawRectangle(20, 20, 290, 390, Color{37, 37, 37, 255});
 
 		EndDrawing();
 
