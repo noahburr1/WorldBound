@@ -61,9 +61,10 @@ int main(){
 
 		for (int i = 0; i < second_inv.size(); i++){
 			DrawRectangle(second_inv[i].x, second_inv[i].y, second_inv[i].width, second_inv[i].height, GRAY);
-
-			print(second_inv[i].x)
 		}
+
+		// DRAW PLAYER HUB
+		DrawRectangle(20, 20, 290, 390, Color{37, 37, 37, 255});
 
 		EndDrawing();
 
