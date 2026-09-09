@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ciukoi8em8lea"]
 
 [ext_resource type="Script" uid="uid://dx8kqk56n02yw" path="res://green_slime_pet.gd" id="1_ly0mk"]
+[ext_resource type="Resource" uid="uid://b72f775ss51rw" path="res://pets/Slime.tres" id="2_2gqwh"]
 [ext_resource type="Texture2D" uid="uid://bcy52bkye04hb" path="res://assets/sprites/slime_green.png" id="2_cvdyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gqwh"]
@@ -63,6 +64,7 @@ size = Vector2(12, 4)
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_ly0mk")
+pet_data = ExtResource("2_2gqwh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=238559917]
 sprite_frames = SubResource("SpriteFrames_lnid4")

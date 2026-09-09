@@ -18,7 +18,7 @@ var hascoyotetime = true
 @onready var interact_box: Area2D = $"interact box"
 @onready var main_health_bar: ProgressBar = $"Camera2D/CanvasLayer/healthbar/main health bar"
 @onready var secondary_health_bar: ProgressBar = $"Camera2D/CanvasLayer/healthbar/secondary health bar"
-@onready var damage_timer: Timer = $"Camera2D/CanvasLayer/Control/secondary health bar/damage timer"
+@onready var damage_timer: Timer = $"Camera2D/CanvasLayer/healthbar/secondary health bar/damage timer"
 @onready var inventory_ui: Control = $"Camera2D/CanvasLayer/inventory UI"
 
 func _ready() -> void:

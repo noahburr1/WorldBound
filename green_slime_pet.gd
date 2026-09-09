@@ -10,7 +10,7 @@ var is_tamed = false
 @onready var floorcast: RayCast2D = $CollisionShape2D/floorcast
 @onready var playercast: RayCast2D = $CollisionShape2D/playercast
 @onready var area_2d: Area2D = $CollisionShape2D/Area2D
-var pet_data: PetData = preload("res://pets/Slime.tres")
+@export var pet_data: PetData
 
 
 

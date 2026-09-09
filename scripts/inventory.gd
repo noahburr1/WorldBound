@@ -31,7 +31,7 @@ func add_item(item: ItemData):
 			return
 	
 
-func add_pet(pet):
+func add_pet(pet: PetData):
 	print("ADDING PET: ", pet)
 
 	pets.append(pet)

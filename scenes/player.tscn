@@ -514,6 +514,7 @@ offset_bottom = 40.0
 script = ExtResource("7_smehm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/hotbar" unique_id=605539793]
+process_mode = 3
 layout_mode = 0
 offset_left = 361.0
 offset_top = 589.0
@@ -606,6 +607,7 @@ offset_right = 48.0
 offset_bottom = 47.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Camera2D/CanvasLayer/hotbar" unique_id=684780302]
+process_mode = 3
 layout_mode = 0
 offset_left = 797.0
 offset_top = 589.0

@@ -7,6 +7,7 @@ extends Control
 @export var slot_index5: int = 4
 @export var slot_index6: int = 5
 var selected_slot = 0
+signal update_pets
 
 @onready var hb_slot_1: Button = $"HBoxContainer/HB slot 1"
 @onready var hb_slot_2: Button = $"HBoxContainer/HB slot 2"
@@ -74,8 +75,12 @@ func _process(delta: float) -> void:
 		selected_slot = 9
 		update_hotbar_ui()
 	if Input.is_action_just_pressed("interact"):
-		use_selected_item()
-		update_hotbar_ui()
+		if selected_slot <= 5:
+			use_selected_item()
+			update_hotbar_ui()
+		if selected_slot>=6:
+			use_selected_pet()
+			update_pets.emit()
 	
 	
 func use_selected_item():
@@ -89,6 +94,9 @@ func use_selected_item():
 		if item.effect != null:
 			player.use_item(item.effect)
 			print("using item")
+
+func use_selected_pet():
+	pass
 
 func update_hotbar_ui():
 	var slots = [
