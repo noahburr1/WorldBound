@@ -42,8 +42,10 @@ int main(){
 
 
 	float y2 = 510;
-	float x2 = 390;
-	for (int i=0; i < 5; i++){
+	float x2 = 40;
+	
+	// float x2 = 390;
+	for (int i=0; i < 9; i++){
 		second_inv.push_back(Rectangle{x2, y2, 70.0f, 70.0f});
 		x2 += 80;
 	}
