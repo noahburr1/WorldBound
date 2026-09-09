@@ -1,5 +1,5 @@
 inventory:
-	g++ inventory1.cpp $$(pkg-config --libs --cflags raylib) -o inventory2
+	g++ inventory2.cpp $$(pkg-config --libs --cflags raylib) -o inventory2
 
 
 inventory1:
