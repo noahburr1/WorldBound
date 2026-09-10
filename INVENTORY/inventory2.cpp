@@ -80,6 +80,8 @@ int main(){
 	draw_item(monster4,"assets/low_monsters/Icon4.png", 700, 200, MONSTER);
 	draw_item(monster5,"assets/low_monsters/Icon33.png", 643, 289, MONSTER);
 
+	
+
 
 	/*ITEMS item1;
 	item1.image = LoadTexture("assets/dead/Icon1.png");
@@ -110,12 +112,13 @@ int main(){
 	
 
 
-	// MATRIX FOR INVENTORY
+	// CREATE MATRIX FOR INVENTORY
 	vector <Rectangle> main_inv = {};
 	vector <Rectangle> second_inv = {};
 
 	SWITCH inventory_switch = OFF;
 
+	// create main inventory
 	float y = 20;
 	for (int i=0; i < 5; i++){
 		float x = 390;
@@ -128,17 +131,20 @@ int main(){
 		y+= 80;
 	}
 
+	// create second inventory
 	float y2 = 510;
-	float x2 = 40;
+	float x2 = 220;
+	// float x2 = 40;
 	
 	// float x2 = 390;
-	for (int i=0; i < 9; i++){
+	for (int i=0; i < 5; i++){
 		second_inv.push_back(Rectangle{x2, y2, 70.0f, 70.0f});
 		x2 += 80;
 	}
 
 	// GAME LOOP
 	while(!WindowShouldClose()){
+
 		// SWITCH STATEMENT
 		if (IsKeyPressed(KEY_Q)){
 			if (inventory_switch == OFF){
@@ -155,6 +161,7 @@ int main(){
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 
+		// DRAW ITEMS & MONSTERS
 		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
 		DrawTextureRec(item2.image, item2.rect, item2.position, WHITE);
 		DrawTextureRec(item3.image, item3.rect, item3.position, WHITE);
