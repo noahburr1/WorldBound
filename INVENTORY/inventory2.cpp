@@ -75,10 +75,10 @@ int main(){
 	draw_item(item5,"assets/dead/Icon7.png", 350, 178, ITEM);
 
 	draw_item(monster1,"assets/low_monsters/Icon5.png", 420, 312, MONSTER);
-	draw_item(monster2,"assets/low_monsters/Icon13.png", 333, 33, MONSTER);
+	draw_item(monster2,"assets/low_monsters/Icon21.png", 333, 33, MONSTER);
 	draw_item(monster3,"assets/low_monsters/Icon47.png", 700, 78, MONSTER);
 	draw_item(monster4,"assets/low_monsters/Icon4.png", 700, 200, MONSTER);
-	draw_item(monster5,"assets/low_monsters/Icon19.png", 643, 289, MONSTER);
+	draw_item(monster5,"assets/low_monsters/Icon33.png", 643, 289, MONSTER);
 
 
 	/*ITEMS item1;
