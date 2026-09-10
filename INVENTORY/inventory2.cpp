@@ -16,7 +16,7 @@ struct ITEMS {
 	Vector2 surf_pos;
 	Vector2 position;
 	Texture2D image;
-	bool active;
+	bool surf_active;
 };
 
 // Switch for inventory
@@ -25,12 +25,44 @@ enum SWITCH {
 	OFF
 };
 
+// FUNCTION FOR DEFINING ITEMS
+void draw_item(ITEMS &item, const char *image_file, float x, float y){
+	item.image = LoadTexture(image_file);
+	item.rect = {0, 0, 32, 32};
+	item.surface = {0, 0, 64, 64};
+	item.surf_pos = {x, y};
+	item.position = {item.surf_pos.x + (item.surface.width  - item.rect.width) / 2,
+		item.surf_pos.y + (item.surface.height - item.rect.height) / 2};
+};
+
 int main(){
 	// SETUP
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Inventory");
 	
 	// ITEMS
 	ITEMS item1;
+	ITEMS item2;
+	ITEMS item3;
+	
+	ITEMS monster1;
+	ITEMS monster2;
+	ITEMS monster3;
+	ITEMS monster4;
+	ITEMS monster5;
+
+	draw_item(item1,"assets/dead/Icon1.png", 20, 50);
+	draw_item(item2,"assets/dead/Icon28.png", 100, 232);
+	draw_item(item3,"assets/dead/Icon41.png", 75, 90);
+
+
+	draw_item(monster1,"assets/low_monsters/Icon5.png", 420, 312);
+	draw_item(monster2,"assets/low_monsters/Icon13.png", 333, 33);
+	draw_item(monster3,"assets/low_monsters/Icon47.png", 700, 78);
+	draw_item(monster4,"assets/low_monsters/Icon4.png", 700, 200);
+	draw_item(monster5,"assets/low_monsters/Icon19.png", 643, 289);
+
+
+	/*ITEMS item1;
 	item1.image = LoadTexture("assets/dead/Icon1.png");
 	item1.rect = {0, 0, 32, 32};
 	item1.surface = {0, 0, 64, 64};
@@ -39,6 +71,24 @@ int main(){
 		item1.surf_pos.y + (item1.surface.height - item1.rect.height) / 2};
 
 
+	ITEMS item2;
+	item2.image = LoadTexture("assets/dead/Icon12.png");
+	item2.rect = {0, 0, 32, 32};
+	item2.surface = {0, 0, 64, 64};
+	item2.surf_pos = {200, 168};
+	item2.position = {item2.surf_pos.x + (item2.surface.width  - item2.rect.width) / 2,
+		item2.surf_pos.y + (item2.surface.height - item2.rect.height) / 2};
+
+
+
+	ITEMS item3;
+	item3.image = LoadTexture("assets/dead/Icon41.png");
+	item3.rect = {0, 0, 32, 32};
+	item3.surface = {0, 0, 64, 64};
+	item3.surf_pos = {175, 128};
+	item3.position = {item3.surf_pos.x + (item3.surface.width  - item3.rect.width) / 2,
+		item3.surf_pos.y + (item3.surface.height - item3.rect.height) / 2};*/
+	
 
 
 	// MATRIX FOR INVENTORY
@@ -70,10 +120,6 @@ int main(){
 
 	// GAME LOOP
 	while(!WindowShouldClose()){
-		BeginDrawing();
-		ClearBackground(RAYWHITE);
-
-
 		// SWITCH STATEMENT
 		if (IsKeyPressed(KEY_Q)){
 			if (inventory_switch == OFF){
@@ -84,6 +130,22 @@ int main(){
 				inventory_switch = OFF;
 			}
 		}
+
+
+		// DRAW
+		BeginDrawing();
+		ClearBackground(RAYWHITE);
+
+		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
+		DrawTextureRec(item2.image, item2.rect, item2.position, WHITE);
+		DrawTextureRec(item3.image, item3.rect, item3.position, WHITE);
+
+		DrawTextureRec(monster1.image, monster1.rect, monster1.position, WHITE);
+		DrawTextureRec(monster2.image, monster2.rect, monster2.position, WHITE);
+		DrawTextureRec(monster3.image, monster3.rect, monster3.position, WHITE);
+		DrawTextureRec(monster4.image, monster4.rect, monster4.position, WHITE);
+		DrawTextureRec(monster5.image, monster5.rect, monster5.position, WHITE);
+
 
 		// DRAW INVENTORIES
 		if (inventory_switch == ON){
@@ -98,9 +160,6 @@ int main(){
 		for (int i = 0; i < second_inv.size(); i++){
 			DrawRectangle(second_inv[i].x, second_inv[i].y, second_inv[i].width, second_inv[i].height, GRAY);
 		}
-
-		DrawRectangle(item1.surf_pos.x, item1.surf_pos.y, 70, 70, GRAY);
-		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
 
 
 		EndDrawing();
