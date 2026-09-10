@@ -43,6 +43,8 @@ int main(){
 	ITEMS item1;
 	ITEMS item2;
 	ITEMS item3;
+	ITEMS item4;
+	ITEMS item5;
 	
 	ITEMS monster1;
 	ITEMS monster2;
@@ -53,7 +55,8 @@ int main(){
 	draw_item(item1,"assets/dead/Icon1.png", 20, 50);
 	draw_item(item2,"assets/dead/Icon28.png", 100, 232);
 	draw_item(item3,"assets/dead/Icon41.png", 75, 90);
-
+	draw_item(item4,"assets/dead/Icon2.png", 188, 99);
+	draw_item(item5,"assets/dead/Icon7.png", 350, 178);
 
 	draw_item(monster1,"assets/low_monsters/Icon5.png", 420, 312);
 	draw_item(monster2,"assets/low_monsters/Icon13.png", 333, 33);
@@ -139,6 +142,9 @@ int main(){
 		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
 		DrawTextureRec(item2.image, item2.rect, item2.position, WHITE);
 		DrawTextureRec(item3.image, item3.rect, item3.position, WHITE);
+		DrawTextureRec(item4.image, item4.rect, item4.position, WHITE);
+		DrawTextureRec(item5.image, item5.rect, item5.position, WHITE);
+
 
 		DrawTextureRec(monster1.image, monster1.rect, monster1.position, WHITE);
 		DrawTextureRec(monster2.image, monster2.rect, monster2.position, WHITE);
