@@ -10,8 +10,10 @@ using namespace std;
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
 
-struct INVENTORY {
+struct ITEMS {
 	Rectangle rect;
+	Rectangle surface;
+	Vector2 surf_pos;
 	Vector2 position;
 	Texture2D image;
 	bool active;
@@ -26,6 +28,18 @@ enum SWITCH {
 int main(){
 	// SETUP
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Inventory");
+	
+	// ITEMS
+	ITEMS item1;
+	item1.image = LoadTexture("assets/dead/Icon1.png");
+	item1.rect = {0, 0, 32, 32};
+	item1.surface = {0, 0, 64, 64};
+	item1.surf_pos = {20, 50};
+	item1.position = {item1.surf_pos.x + (item1.surface.width  - item1.rect.width) / 2,
+		item1.surf_pos.y + (item1.surface.height - item1.rect.height) / 2};
+
+
+
 
 	// MATRIX FOR INVENTORY
 	vector <Rectangle> main_inv = {};
@@ -44,7 +58,6 @@ int main(){
 
 		y+= 80;
 	}
-
 
 	float y2 = 510;
 	float x2 = 40;
@@ -85,6 +98,10 @@ int main(){
 		for (int i = 0; i < second_inv.size(); i++){
 			DrawRectangle(second_inv[i].x, second_inv[i].y, second_inv[i].width, second_inv[i].height, GRAY);
 		}
+
+		DrawRectangle(item1.surf_pos.x, item1.surf_pos.y, 70, 70, GRAY);
+		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
+
 
 		EndDrawing();
 	}
