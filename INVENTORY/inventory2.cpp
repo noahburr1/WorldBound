@@ -10,13 +10,9 @@ using namespace std;
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
 
-struct ITEMS {
-	Rectangle rect;
-	Rectangle surface;
-	Vector2 surf_pos;
-	Vector2 position;
-	Texture2D image;
-	bool surf_active;
+enum ItemType {
+	ITEM,
+	MONSTER
 };
 
 // Switch for inventory
@@ -25,14 +21,34 @@ enum SWITCH {
 	OFF
 };
 
+struct ITEMS {
+	Rectangle rect;
+	Rectangle surface;
+	Vector2 surf_pos;
+	Vector2 position;
+	Texture2D image;
+	bool surf_active;
+	ItemType type;
+};
+
+
 // FUNCTION FOR DEFINING ITEMS
-void draw_item(ITEMS &item, const char *image_file, float x, float y){
+void draw_item(ITEMS &item, const char *image_file, float x, float y, ItemType type){
 	item.image = LoadTexture(image_file);
 	item.rect = {0, 0, 32, 32};
 	item.surface = {0, 0, 64, 64};
 	item.surf_pos = {x, y};
 	item.position = {item.surf_pos.x + (item.surface.width  - item.rect.width) / 2,
 		item.surf_pos.y + (item.surface.height - item.rect.height) / 2};
+	item.type = type;
+
+	/*if (item.type == MONSTER) {
+		print("YES")
+	}
+
+	else if (item.type == ITEM){
+		print("NO")
+	}*/
 };
 
 int main(){
@@ -52,17 +68,17 @@ int main(){
 	ITEMS monster4;
 	ITEMS monster5;
 
-	draw_item(item1,"assets/dead/Icon1.png", 20, 50);
-	draw_item(item2,"assets/dead/Icon28.png", 100, 232);
-	draw_item(item3,"assets/dead/Icon41.png", 75, 90);
-	draw_item(item4,"assets/dead/Icon2.png", 188, 99);
-	draw_item(item5,"assets/dead/Icon7.png", 350, 178);
+	draw_item(item1,"assets/dead/Icon1.png", 20, 50, ITEM);
+	draw_item(item2,"assets/dead/Icon28.png", 100, 232, ITEM);
+	draw_item(item3,"assets/dead/Icon41.png", 75, 90, ITEM);
+	draw_item(item4,"assets/dead/Icon2.png", 188, 99, ITEM);
+	draw_item(item5,"assets/dead/Icon7.png", 350, 178, ITEM);
 
-	draw_item(monster1,"assets/low_monsters/Icon5.png", 420, 312);
-	draw_item(monster2,"assets/low_monsters/Icon13.png", 333, 33);
-	draw_item(monster3,"assets/low_monsters/Icon47.png", 700, 78);
-	draw_item(monster4,"assets/low_monsters/Icon4.png", 700, 200);
-	draw_item(monster5,"assets/low_monsters/Icon19.png", 643, 289);
+	draw_item(monster1,"assets/low_monsters/Icon5.png", 420, 312, MONSTER);
+	draw_item(monster2,"assets/low_monsters/Icon13.png", 333, 33, MONSTER);
+	draw_item(monster3,"assets/low_monsters/Icon47.png", 700, 78, MONSTER);
+	draw_item(monster4,"assets/low_monsters/Icon4.png", 700, 200, MONSTER);
+	draw_item(monster5,"assets/low_monsters/Icon19.png", 643, 289, MONSTER);
 
 
 	/*ITEMS item1;
