@@ -149,6 +149,10 @@ int main(){
 
 		// DRAW INVENTORIES
 		if (inventory_switch == ON){
+			// DRAW INVENTORY SURFACE
+			DrawRectangle(0, 0, SCREEN_WIDTH, 430, PURPLE);
+
+
 			for (int i = 0; i < main_inv.size(); i++){
 				DrawRectangle(main_inv[i].x, main_inv[i].y, main_inv[i].width, main_inv[i].height, GRAY);
 			}
