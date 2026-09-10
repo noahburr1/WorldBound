@@ -81,6 +81,8 @@ int main(){
 	draw_item(monster5,"assets/low_monsters/Icon33.png", 643, 289, MONSTER);
 
 	
+	// vector for items and monsters
+	vector <ITEMS> collection = {item1, item2, item3, item4, item5, monster1, monster2, monster3, monster4, monster5};
 
 
 	/*ITEMS item1;
@@ -145,6 +147,15 @@ int main(){
 	// GAME LOOP
 	while(!WindowShouldClose()){
 
+		for (int i=0; i < collection.size(); i++){
+			Rectangle itemRect = {collection[i].position.x, collection[i].position.y, collection[i].rect.width, collection[i].rect.height};
+
+			if (CheckCollisionPointRec(GetMousePosition(), itemRect) && IsMouseButtonPressed(0)){
+				print("TRUE")
+			}
+		}
+
+	
 		// SWITCH STATEMENT
 		if (IsKeyPressed(KEY_Q)){
 			if (inventory_switch == OFF){
