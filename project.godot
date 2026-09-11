@@ -27,7 +27,6 @@ Inventory="*uid://bln5l1b0nsebs"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [global_group]
 
