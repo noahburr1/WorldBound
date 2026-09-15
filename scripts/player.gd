@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const acceleration = 660
@@ -11,6 +11,8 @@ var coyote = true
 @onready var coyote_timer: Timer = $"coyote timer"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+func _ready() -> void:
+	health = Global.playerhealth
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("moveL", "moveR")

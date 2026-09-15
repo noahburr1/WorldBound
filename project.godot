@@ -18,6 +18,10 @@ config/name="WorldBound"
 run/main_scene="uid://cb0jnr23ivedt"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Global="*uid://diib4p1vadvn4"
+
 [display]
 
 window/stretch/mode="canvas_items"
