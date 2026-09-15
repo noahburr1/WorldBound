@@ -9,6 +9,7 @@ var coyote = true
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var coyote_timer: Timer = $"coyote timer"
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +34,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * SPEED, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED/10)
+		
+	#animations process
+	if is_on_floor() and direction:
+		animated_sprite_2d.play("running")
+	elif is_on_floor() and direction == 0:
+		animated_sprite_2d.play("idle")
+	
+	
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
 
 	move_and_slide()
 
