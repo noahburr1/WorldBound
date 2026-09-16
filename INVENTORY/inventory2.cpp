@@ -29,7 +29,6 @@ struct ITEMS {
 	Texture2D image;
 	bool surf_active;
 	ItemType type;
-	bool active;
 };
 
 
@@ -42,7 +41,7 @@ void draw_item(ITEMS &item, const char *image_file, float x, float y, ItemType t
 	item.position = {item.surf_pos.x + (item.surface.width  - item.rect.width) / 2,
 		item.surf_pos.y + (item.surface.height - item.rect.height) / 2};
 	item.type = type;
-	item.active = true;
+	item.surf_active = false;
 
 	/*if (item.type == MONSTER) {
 		print("YES")
@@ -117,8 +116,8 @@ int main(){
 
 
 	// CREATE MATRIX FOR INVENTORY
-	vector <Rectangle> main_inv = {};
-	vector <Rectangle> second_inv = {};
+	vector <Rectangle> main_inv = {}; // the main is the whole inventory
+	vector <Rectangle> second_inv = {}; // the secondary is the hotbar
 
 	SWITCH inventory_switch = OFF;
 
@@ -146,6 +145,12 @@ int main(){
 		x2 += 80;
 	}
 
+
+
+	// INVENTORY DISPLAY
+	vector<ITEMS> storage = {}; // this is a vector for after I collide with the image and I need to display the image
+
+
 	// GAME LOOP
 	while(!WindowShouldClose()){
 
@@ -153,12 +158,19 @@ int main(){
 			Rectangle itemRect = {collection[i].position.x, collection[i].position.y, collection[i].rect.width, collection[i].rect.height};
 
 			if (CheckCollisionPointRec(GetMousePosition(), itemRect) && IsMouseButtonPressed(0)){
+				storage.push_back(collection[i]);
 				collection.erase(collection.begin() + i);
 				i--;
 			}
 		}
 
-	
+		for (int i = 0; i < storage.size() && i < second_inv.size(); i++){
+			storage[i].position.x = second_inv[i].x + 20;
+			storage[i].position.y = second_inv[i].y + 20;
+			storage[i].rect.width = second_inv[i].width;
+			storage[i].rect.height = second_inv[i].height;
+		}
+
 		// SWITCH STATEMENT
 		if (IsKeyPressed(KEY_Q)){
 			if (inventory_switch == OFF){
@@ -206,12 +218,18 @@ int main(){
 				DrawRectangle(main_inv[i].x, main_inv[i].y, main_inv[i].width, main_inv[i].height, GRAY);
 			}
 
+
 			// DRAW PLAYER HUB
 			DrawRectangle(20, 20, 290, 390, Color{37, 37, 37, 255});
 		}
 
 		for (int i = 0; i < second_inv.size(); i++){
 			DrawRectangle(second_inv[i].x, second_inv[i].y, second_inv[i].width, second_inv[i].height, GRAY);
+		}
+
+		for (int i = 0; i < storage.size(); i++) {
+			DrawTexture(storage[i].image, storage[i].position.x, storage[i].position.y, WHITE);
+			
 		}
 
 
