@@ -29,6 +29,7 @@ struct ITEMS {
 	Texture2D image;
 	bool surf_active;
 	ItemType type;
+	bool active;
 };
 
 
@@ -41,6 +42,7 @@ void draw_item(ITEMS &item, const char *image_file, float x, float y, ItemType t
 	item.position = {item.surf_pos.x + (item.surface.width  - item.rect.width) / 2,
 		item.surf_pos.y + (item.surface.height - item.rect.height) / 2};
 	item.type = type;
+	item.active = true;
 
 	/*if (item.type == MONSTER) {
 		print("YES")
@@ -151,7 +153,8 @@ int main(){
 			Rectangle itemRect = {collection[i].position.x, collection[i].position.y, collection[i].rect.width, collection[i].rect.height};
 
 			if (CheckCollisionPointRec(GetMousePosition(), itemRect) && IsMouseButtonPressed(0)){
-				print("TRUE")
+				collection.erase(collection.begin() + i);
+				i--;
 			}
 		}
 
@@ -173,18 +176,24 @@ int main(){
 		ClearBackground(RAYWHITE);
 
 		// DRAW ITEMS & MONSTERS
-		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
-		DrawTextureRec(item2.image, item2.rect, item2.position, WHITE);
-		DrawTextureRec(item3.image, item3.rect, item3.position, WHITE);
-		DrawTextureRec(item4.image, item4.rect, item4.position, WHITE);
-		DrawTextureRec(item5.image, item5.rect, item5.position, WHITE);
+//		DrawTextureRec(item1.image, item1.rect, item1.position, WHITE);
+//		DrawTextureRec(item2.image, item2.rect, item2.position, WHITE);
+//		DrawTextureRec(item3.image, item3.rect, item3.position, WHITE);
+//		DrawTextureRec(item4.image, item4.rect, item4.position, WHITE);
+//		DrawTextureRec(item5.image, item5.rect, item5.position, WHITE);
+//
+//
+//		DrawTextureRec(monster1.image, monster1.rect, monster1.position, WHITE);
+//		DrawTextureRec(monster2.image, monster2.rect, monster2.position, WHITE);
+//		DrawTextureRec(monster3.image, monster3.rect, monster3.position, WHITE);
+//		DrawTextureRec(monster4.image, monster4.rect, monster4.position, WHITE);
+//		DrawTextureRec(monster5.image, monster5.rect, monster5.position, WHITE);
 
 
-		DrawTextureRec(monster1.image, monster1.rect, monster1.position, WHITE);
-		DrawTextureRec(monster2.image, monster2.rect, monster2.position, WHITE);
-		DrawTextureRec(monster3.image, monster3.rect, monster3.position, WHITE);
-		DrawTextureRec(monster4.image, monster4.rect, monster4.position, WHITE);
-		DrawTextureRec(monster5.image, monster5.rect, monster5.position, WHITE);
+		// DRAW ITEMS & MONSTERS
+		for (int i=0; i < collection.size(); i++){
+			 DrawTextureRec(collection[i].image, collection[i].rect, collection[i].position, WHITE);
+		}
 
 
 		// DRAW INVENTORIES
