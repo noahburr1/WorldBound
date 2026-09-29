@@ -119,6 +119,9 @@ animations = [{
 radius = 12.0
 height = 64.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(85, 67)
+
 [node name="player" type="CharacterBody2D" unique_id=286679637 groups=["player"]]
 script = ExtResource("1_qhqgy")
 
@@ -138,8 +141,20 @@ shape = SubResource("CapsuleShape2D_xrivr")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1695457140]
 
 [node name="coyote timer" type="Timer" parent="." unique_id=443721412]
-wait_time = 0.23
+wait_time = 0.14
 one_shot = true
 ignore_time_scale = true
 
+[node name="hit box" type="Area2D" parent="." unique_id=1567077521]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit box" unique_id=2030905014]
+position = Vector2(42.5, -32.5)
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[node name="interaction timer" type="Timer" parent="hit box" unique_id=694759428]
+wait_time = 0.1
+ignore_time_scale = true
+
 [connection signal="timeout" from="coyote timer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="hit box/interaction timer" to="." method="_on_interaction_timer_timeout"]

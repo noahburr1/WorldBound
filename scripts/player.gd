@@ -30,9 +30,10 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
 		coyote = true
-	if not is_on_floor():
-		coyote_timer.start()
-		if Input.is_action_just_pressed("jump") and coyote == true:
+	elif not is_on_floor():
+		if coyote_timer.is_stopped():
+			coyote_timer.start()
+		if Input.is_action_just_pressed("jump") and coyote:
 			velocity.y = JUMP_VELOCITY
 	
 	#linear movement
@@ -65,15 +66,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	coyote = false
+	
 
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	pass
 
 
 func _on_interaction_timer_timeout() -> void:
-	pass # Replace with function body.
+	hit_box.monitoring = false
+	interactiontime = true
